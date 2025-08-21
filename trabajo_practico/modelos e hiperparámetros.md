@@ -135,6 +135,46 @@
   - [Random forest e hiperparámetros - Stackoverflow](https://stackoverflow.com/questions/36107820/how-to-tune-parameters-in-random-forest-using-scikit-learn)
   - [Random Forest e hiperparámetros - explicación](https://www.analyticsvidhya.com/blog/2015/06/tuning-random-forest-model/)
 
+## HistGradientBoostingRegressor
+
+- [Scikit Learn model](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html)
+- Hiperparámetros
+  - `loss`
+    - Función de perdida utilizada en el proceso de *boosting*.
+    - Posibles valores: `squared_error, absolute_error, gamma, poisson, quantile`
+  - `quantile`
+    - Especifica que cuantil estimar.
+    - Solo aplica cuando `loss` es `quantile`.
+    - Acepta valores entre 0 y 1.
+  - `learning_rate`
+    - Se utiliza como factor de *shrinkage* en cada iteración de *boosting*.
+    - Se suelen utilizar valores como 0.01, 0.5 y 0.1.
+    - En caso de utilizar valores más pequeños, es posible que haya que aumentar el valor de `max_iter`.
+  - `max_iter`
+    - El número máximo de iteraciones en el proceso de boosting (o máximo número de árboles).
+    - Suele utilizarse junto a *early stopping* junto a valores grandes (ej: *1000*).
+  - `max_leaf_nodes`
+    - Máximo número de hojas por árbol.
+    - Estrictamente debe ser mayor a 1.
+    - Default: 31.
+    - Suelen utilizarse valores entre 2 y 31, además de *None*.
+  - `max_depth`
+    - Máxima profundidad de un árbol.
+    - Suelen utilizarse valores entre 3 y 10, junto con *None*.
+  - `min_samples_leaf`
+    - Cantidad mínima de registros por hoja.
+    - Default: 20.
+    - Suelen utilizarse valores entre 1 y 50, aunque para datasets pequeños se recomienda utilizar valores pequeños.
+  - `l2_regularization`
+    - Regularización $L2$.
+    - El valor $0$ significa que no se aplicará regularización $L2$.
+    - Suelen utilizarse valores como $0.0001$, $0.001$, $0.01$, entre otros, en escalas logaritmicas.
+  - `early_stopping`
+    - Posibles valores: `auto`, o booleano.
+    - Si se utiliza `auto`, early stopping se habilita cuando hay más de 10000 registros.
+    - Valor por defecto: `auto`.
+    - ***Se utilizará el valor por defecto***
+
 ## XGBoost
 
 - [xgb.XGBRegressor model](https://xgboost.readthedocs.io/en/stable/parameter.html)
